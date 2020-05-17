@@ -1,0 +1,17 @@
+.float{
+	position:fixed;
+	width:20px;
+	height:20px;
+	top:5px;
+	left:0px;
+	background-color:#0C9;
+	color:#FFF;
+    border-radius:44px;
+	text-align:center;
+    box-shadow: 2px 2px 3px #999;
+    padding: 20px;
+}
+
+.my-float{
+	margin:3px;
+}
