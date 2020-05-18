@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import initialData from '../../data/initial-data';
 import '@atlaskit/css-reset';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
@@ -8,6 +7,7 @@ import Aux from "../../hoc/Aux/Aux";
 import Popup from 'reactjs-popup';
 import NewTaskForm from "../../components/ControlPanel/NewTaskForm/NewTaskForm";
 import  "./Eisenboard.css";
+import { connect } from "react-redux";
 
 const Container = styled.div`
   display: flex;
@@ -16,15 +16,11 @@ const Container = styled.div`
 
 class Eisenboard extends Component{
     state = {
-        ...initialData,
-        addingNew: false,
-        newValue: "",
         taskCounter: 5
     };
 
     onDragEnd = (result) => {
         const { destination, source, draggableId } = result;    
-        document.body.style.color = 'inherit';
 
         // if destination is not a droppable, do nothing
         if(!destination)return;
@@ -34,59 +30,25 @@ class Eisenboard extends Component{
             destination.droppableId === source.droppableId &&
             destination.index === source.index
         ) {return;}
-
-
-        const startingDroppable = this.state.columns[source.droppableId];
-        const endingDroppable = this.state.columns[destination.droppableId];
-
+        
         // If draggable dropped in same droppable, but different position
-        if(startingDroppable === endingDroppable){
-            const newTaskIds = Array.from(startingDroppable.taskIds);
-            newTaskIds.splice(source.index, 1);
-            newTaskIds.splice(destination.index, 0, draggableId);
-
-            const newColumn = {
-                ...startingDroppable,
-                taskIds: newTaskIds
-            };
-
-            const newState = {
-                ...this.state,
-                columns: {
-                    ...this.state.columns,
-                    [newColumn.id]: newColumn
-                }
-            }
-
-            this.setState(newState);
+        if(source.droppableId === destination.droppableId){
+            this.props.reorderTaskInSameColumn(source.index, 
+                destination.index, 
+                source.droppableId, 
+                draggableId
+            );
             return;
         } 
 
         //If draggable dropped in another droppable
-        const startTaskIds = Array.from(startingDroppable.taskIds);
-        startTaskIds.splice(source.index,1);
-        const newStart = {
-            ...startingDroppable,
-            taskIds: startTaskIds
-        };
-
-        const finishTaskIds = Array.from(endingDroppable.taskIds);
-        finishTaskIds.splice(destination.index,0, draggableId);
-        const newFinish = {
-            ...endingDroppable,
-            taskIds: finishTaskIds
-        };
-
-        const newState = {
-            ...this.state,
-            columns: {
-                ...this.state.columns,
-                [newStart.id]: newStart,
-                [newFinish.id]: newFinish,
-            }
-        }
-
-        this.setState(newState);
+        this.props.reorderTaskInDifferentColumn(
+            source.index, 
+            destination.index, 
+            source.droppableId, 
+            destination.droppableId, 
+            draggableId
+        );
         return;
     }
     
@@ -114,15 +76,7 @@ class Eisenboard extends Component{
         targetColumn += "Important";
         const taskID = 'task-'+this.state.taskCounter;
 
-        let columns = this.state.columns;
-        columns[targetColumn].taskIds.push(taskID);
-        let tasklist = this.state.tasklist;
-        tasklist[taskID] = { id: taskID, content: taskname, timeslots: timeslots, description: description};
-
-        this.setState({
-            tasklist:tasklist,
-            columns:columns
-        });
+        this.props.addNewTask(taskID, targetColumn, taskname, timeslots, description);        
 
         const taskCounter = this.state.taskCounter+1;
         this.setState({taskCounter:taskCounter});
@@ -134,7 +88,7 @@ class Eisenboard extends Component{
 		<Aux>            
             <Popup trigger={<a href="#" className="float"> <i className="fa fa-plus my-float"></i> </a>} position="bottom left">
                 {close => (
-                    <NewTaskForm/>
+                    <NewTaskForm handleSubmit={this.handleSubmit}/>
                 )}
             </Popup>
 
@@ -148,13 +102,13 @@ class Eisenboard extends Component{
                                 <Container {...provided.droppableProps} ref={provided.innerRef} >
 
                                     <InnerList
-                                        key="UrgentImportant" taskMap={this.state.tasklist}
-                                        column={this.state.columns.UrgentImportant} index={0}
+                                        key="UrgentImportant" taskMap={this.props.tasklist}
+                                        column={this.props.columns.UrgentImportant} index={0}
                                     /> 
 
                                     <InnerList 
-                                        key="UrgentNotImportant" taskMap={this.state.tasklist}
-                                        column={this.state.columns.UrgentNotImportant} index={1} 
+                                        key="UrgentNotImportant" taskMap={this.props.tasklist}
+                                        column={this.props.columns.UrgentNotImportant} index={1} 
                                     /> 
 
                                     {provided.placeholder}
@@ -175,13 +129,13 @@ class Eisenboard extends Component{
                                 <Container {...provided.droppableProps} ref={provided.innerRef} >
                                     
                                     <InnerList
-                                        key="NotUrgentImportant" taskMap={this.state.tasklist}
-                                        column={this.state.columns.NotUrgentImportant} index={0}
+                                        key="NotUrgentImportant" taskMap={this.props.tasklist}
+                                        column={this.props.columns.NotUrgentImportant} index={0}
                                     /> 
 
                                     <InnerList
-                                        key="NotUrgentNotImportant" taskMap={this.state.tasklist}
-                                        column={this.state.columns.NotUrgentNotImportant} index={1}
+                                        key="NotUrgentNotImportant" taskMap={this.props.tasklist}
+                                        column={this.props.columns.NotUrgentNotImportant} index={1}
                                     /> 
 
                                     {provided.placeholder}
@@ -198,4 +152,43 @@ class Eisenboard extends Component{
     }
 }
 
-export default Eisenboard;
+//Redux mappings
+const mapStateToProps = state => {
+    return {
+        tasklist : state.tasklist,
+        columns: state.columns
+    };
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addNewTask : (taskID, targetColumn, taskname, timeslots, description) => dispatch({
+            type : 'ADD_TASK', providedData : {
+                taskID : taskID,
+                targetColumn : targetColumn,
+                taskname:taskname,
+                timeslots : timeslots,
+                description : description
+            }
+        }),
+        reorderTaskInSameColumn : (sourceIndex, destinationIndex, columnID, draggableId) => dispatch({
+            type : 'DND_IN_SAME_LIST', providedData : {
+                sourceIndex : sourceIndex,
+                destinationIndex : destinationIndex,
+                columnID: columnID,
+                draggableId: draggableId
+            }
+        }) ,
+        reorderTaskInDifferentColumn : (sourceIndex, destinationIndex, sourceDroppableID, destinationDroppableID, draggableID ) => dispatch({
+            type : 'DND_IN_DIFF_LIST', providedData : {
+                sourceIndex : sourceIndex,
+                destinationIndex : destinationIndex,
+                sourceDroppableID : sourceDroppableID,
+                destinationDroppableID : destinationDroppableID,
+                draggableID : draggableID
+            }
+        }) 
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Eisenboard);

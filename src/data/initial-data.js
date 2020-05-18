@@ -39,12 +39,12 @@ const initialData = {
         'NotUrgentImportant':{
             id: 'NotUrgentImportant',
             title: 'Not-Urgent-Important',
-            taskIds: ['task-3']
+            taskIds: ['task-3', 'task-4']
         },
         'NotUrgentNotImportant':{
             id: 'NotUrgentNotImportant',
             title: 'Not-Urget-Not-Important',
-            taskIds: ['task-4']
+            taskIds: []
         },
     }
 };
