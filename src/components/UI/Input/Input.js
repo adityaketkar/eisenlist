@@ -1,29 +1,29 @@
 import React from 'react';
-import classes from './Input.css';
+import './Input.css';
 
 const input = (props) => {
 
     let inputElement = null;
     switch (props.inputtype) {
         case ('input'):
-            inputElement = <input className={classes.InputElement} {...props} />
+            inputElement = <input defaultValue={props.prefillvalue} className="InputElement" {...props} />
             break;
         case ('textarea'):
-            inputElement = <textarea className={classes.InputElement} {...props}/>
+            inputElement = <textarea defaultValue={props.prefillvalue} className="InputElement" {...props}/>
             break;
         case ('checkbox'):
-            inputElement = <input className={classes.InputElement} type="checkbox" {...props}/>
+            inputElement = <input className="InputElement" type="checkbox" {...props}/>
             break;
         case ('number'):
-            inputElement = <input className={classes.InputElement} type="number" {...props}/>
+            inputElement = <input defaultValue={props.prefillvalue} className="InputElement" type="number" {...props}/>
             break;
         default:
-            inputElement = <input className={classes.InputElement} {...props}/>
+            inputElement = <input className="InputElement" {...props}/>
             break;
     }
     return (
-        <div className={classes.Input}>
-            <label className={classes.Label}>{props.label}</label>
+        <div className="Input">
+            <label className="Label">{props.label}</label>
             {inputElement}
         </div>
     );

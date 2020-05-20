@@ -1,0 +1,56 @@
+form{
+    margin: 4px;
+}
+
+label{
+    font-size: x-small;
+}
+
+input[type=submit]{
+    background-color: transparent;
+    border: 1px solid #DDD;
+    border-radius: 0.2em;
+    color: #333;
+    cursor: pointer;
+    align-self: center;
+    font-size: 10px;
+    line-height: 1;
+    display: block;
+    margin: auto;
+    width: auto;
+    padding: 5px;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+}
+
+input[type=number]{
+    background-color: transparent;
+    border: 1px solid #DDD;
+    border-radius: 0.2em;
+    color: #333;
+    align-self: center;
+    display: inline-block;
+    width: 30%;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+}
+
+input[type=checkbox]{
+    background-color: pink;
+    border: 1px solid #DDD;
+    border-radius: 0.2em;
+    color: #333;
+    align-self: center;
+    display: inline;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+}

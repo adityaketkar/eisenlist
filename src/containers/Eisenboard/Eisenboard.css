@@ -2,8 +2,8 @@
 	position:fixed;
 	width:20px;
 	height:20px;
-	top:5px;
-	left:0px;
+	top:20px;
+	left:5px;
 	background-color:#0C9;
 	color:#FFF;
     border-radius:44px;
@@ -15,3 +15,20 @@
 .my-float{
 	margin:3px;
 }
+
+.rowContainer{
+  display: flex;
+  justify-content: center;
+  border-style: dotted;
+  border-width: 1px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.Completed {
+  width: 30%;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+}
+

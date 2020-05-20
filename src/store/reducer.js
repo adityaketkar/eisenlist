@@ -66,7 +66,18 @@ const reducer = (state = initialState, action) => {
             tasklist: tasklist,
             columns : columns
         }
-    } 
+    }
+    if( action.type === "EDIT_TASK"){
+
+        let newTaskList = { ...state.tasklist }
+        newTaskList[action.taskID] = action.newTaskObject
+        console.log(newTaskList);
+        
+        return {
+            ...state,
+            tasklist: newTaskList
+        };
+    }
 
     return state;
 };

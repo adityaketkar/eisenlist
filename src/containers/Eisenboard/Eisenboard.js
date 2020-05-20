@@ -1,18 +1,12 @@
 import React, { Component } from "react";
 import '@atlaskit/css-reset';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import styled from 'styled-components';
 import InnerList from "../../components/InnerList/InnerList";
 import Aux from "../../hoc/Aux/Aux";
 import Popup from 'reactjs-popup';
 import NewTaskForm from "../../components/ControlPanel/NewTaskForm/NewTaskForm";
 import  "./Eisenboard.css";
 import { connect } from "react-redux";
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-`;
 
 class Eisenboard extends Component{
     state = {
@@ -24,6 +18,11 @@ class Eisenboard extends Component{
 
         // if destination is not a droppable, do nothing
         if(!destination)return;
+
+        if(destination==="Complete"){
+            console.log("Complete");
+            
+        }
 
         // if element is dropped right back to its place, do nothing
         if (
@@ -86,7 +85,14 @@ class Eisenboard extends Component{
     return (
 		//Parent component, allows drag and drop
 		<Aux>            
-            <Popup trigger={<a href="#" className="float"> <i className="fa fa-plus my-float"></i> </a>} position="bottom left">
+            <Popup 
+                trigger={<a href="#" className="float"> <i className="fa fa-plus my-float"></i> </a>} 
+                position="bottom left"
+                arrow={true}
+                closeOnDocumentClick
+                closeOnEscape
+                keepTooltipInside
+            >
                 {close => (
                     <NewTaskForm handleSubmit={this.handleSubmit}/>
                 )}
@@ -99,7 +105,7 @@ class Eisenboard extends Component{
                     { 
                         (provided) => {
                             return (
-                                <Container {...provided.droppableProps} ref={provided.innerRef} >
+                                <div className="rowContainer" {...provided.droppableProps} ref={provided.innerRef} >
 
                                     <InnerList
                                         key="UrgentImportant" taskMap={this.props.tasklist}
@@ -113,7 +119,7 @@ class Eisenboard extends Component{
 
                                     {provided.placeholder}
                                     
-                                </Container>
+                                </div >
                             )
 					    }
                     }
@@ -126,7 +132,7 @@ class Eisenboard extends Component{
                     {
                         (provided) => {
                             return (
-                                <Container {...provided.droppableProps} ref={provided.innerRef} >
+                                <div className="rowContainer" {...provided.droppableProps} ref={provided.innerRef} >
                                     
                                     <InnerList
                                         key="NotUrgentImportant" taskMap={this.props.tasklist}
@@ -139,13 +145,12 @@ class Eisenboard extends Component{
                                     /> 
 
                                     {provided.placeholder}
-                                </Container>
+                                </div>
                             )
 					    }
                     }
 				</Droppable>
 			</div>
-            
         </DragDropContext>
         </Aux>
     );

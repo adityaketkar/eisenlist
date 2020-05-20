@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Column from "../column";
+import Column from "../Column/column";
 
 
 class InnerList extends Component {  

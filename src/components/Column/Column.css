@@ -1,0 +1,24 @@
+.Container{
+    margin: 8px;
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    background-color:white;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 20px;
+}
+.Title{
+    padding: 8px;
+    text-align: center;
+}
+
+.TaskList{
+    padding: 8px;
+    transition: background-color 0.2s ease;
+    background-color: inherit;
+    /* ${props => (props.isDraggingOver? 'lightgrey' : 'inherit')}; */
+    flex-grow: 1;
+    min-height: 100px;
+} 
