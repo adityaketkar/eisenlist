@@ -16,7 +16,8 @@ class NewTaskForm extends Component {
 					<Input prefillvalue={prefillData.description} inputtype="textarea" name="description" placeholder="Description" label="Description"></Input>
 					<Input prefillvalue={prefillData.timeslots} inputtype="number" name="timeslots" label="Pomodoro Slots"></Input>
 					<hr></hr>
-					<input type="submit" value="Update" ></input>
+					<input type="submit" value="Update" style={{backgroundColor: "lightyellow"}}></input>
+					<input onClick={this.props.handleDelete} type="button" value="Delete" style={{backgroundColor: "tomato"}}></input>
 				</form>
 			);
 		}

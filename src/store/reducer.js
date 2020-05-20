@@ -71,11 +71,31 @@ const reducer = (state = initialState, action) => {
 
         let newTaskList = { ...state.tasklist }
         newTaskList[action.taskID] = action.newTaskObject
-        console.log(newTaskList);
         
         return {
             ...state,
             tasklist: newTaskList
+        };
+    }
+    if( action.type === "DELETE_TASK"){
+
+        let newTaskList = { ...state.tasklist };
+        delete newTaskList[action.taskID]; 
+        
+        let newColumns = {
+            ...state.columns
+        };
+        newColumns.NotUrgentImportant.taskIds = newColumns.NotUrgentImportant.taskIds.filter(value =>value!==action.taskID);    
+        newColumns.UrgentImportant.taskIds = newColumns.UrgentImportant.taskIds.filter(value => value!==action.taskID);
+        newColumns.NotUrgentNotImportant.taskIds = newColumns.NotUrgentNotImportant.taskIds.filter(value => value!==action.taskID);
+        newColumns.UrgentNotImportant.taskIds = newColumns.UrgentNotImportant.taskIds.filter(value => value!==action.taskID);
+
+        console.log(state);
+        
+        return {
+            ...state,
+            tasklist: newTaskList,
+            columns: newColumns
         };
     }
 

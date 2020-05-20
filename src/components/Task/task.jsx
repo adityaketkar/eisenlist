@@ -14,21 +14,27 @@ const Container = styled.div`
     background-color: ${props => (props.isDragging? 'lightgreen' : 'white')};
     overflow: auto;
     text-align: center;
+    position: inline;
 }
 `;
 
 class Task extends Component { 
     
     handleSubmitEditedTask = (event) => {
-        event.preventDefault(); // Let's stop this event.
+        event.preventDefault(); 
         const newTaskObject = {
             id: this.props.task.id,
             content: event.target.task.value,
-            descriptio: event.target.description.value,
+            description: event.target.description.value,
             timeslots: event.target.timeslots.value
         }
  
         this.props.editTask(this.props.task.id, newTaskObject);
+    }
+
+    handleDeleteTask = (event) => {
+        event.preventDefault(); // Let's stop this event.
+        this.props.deleteTask(this.props.task.id);
     }
 
     render(){
@@ -48,7 +54,13 @@ class Task extends Component {
                                     ref={provided.innerRef}
                                     isDragging={snapshot.isDragging}
                                     >
-                                        {this.props.task.content}
+                                        <div>
+                                            {this.props.task.content}
+                                        </div>
+                                        <div style={{fontSize:"xx-small"}}>
+                                            Pomodoro Timeslots : {this.props.task.timeslots}
+                                        </div>
+                                         
                                     </Container>
                                 </div>
                             }    
@@ -59,6 +71,7 @@ class Task extends Component {
                             <NewTaskForm
                                 prefillWithTaskId={this.props.task.id} 
                                 handleSubmit={this.handleSubmitEditedTask} 
+                                handleDelete={this.handleDeleteTask}
                             />
                         )}
 
@@ -84,7 +97,11 @@ const mapDispatchToProps = dispatch => {
             type : 'EDIT_TASK',
             taskID : taskID,
             newTaskObject: newTaskObject
-        }) 
+        }),
+        deleteTask : (taskID) => dispatch({
+            type : 'DELETE_TASK',
+            taskID : taskID
+        })
     }
 };
 

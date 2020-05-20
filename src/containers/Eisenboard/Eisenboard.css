@@ -19,8 +19,8 @@
 .rowContainer{
   display: flex;
   justify-content: center;
-  border-style: dotted;
-  border-width: 1px;
+  /* border-style: dotted;
+  border-width: 1px; */
   margin: 5px;
   padding: 5px;
 }

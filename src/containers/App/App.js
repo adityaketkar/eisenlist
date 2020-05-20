@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Eisenboard from '../Eisenboard/Eisenboard';
 import './App.css';
+import ExportToCalender from '../../components/ExportToCalendar/ExportToCalendar';
 
 class App extends Component{
 	
@@ -8,6 +9,7 @@ class App extends Component{
 		return (
 			<div className="EisenboardContainer" >
 				<Eisenboard></Eisenboard>
+				{/* <ExportToCalender></ExportToCalender> */}
 			</div>
 		)
 	}

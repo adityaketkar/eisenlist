@@ -6,18 +6,18 @@ label{
     font-size: x-small;
 }
 
-input[type=submit]{
-    background-color: transparent;
+input[type=submit], input[type=button]{
+    background-color: inherit;
     border: 1px solid #DDD;
     border-radius: 0.2em;
     color: #333;
     cursor: pointer;
-    align-self: center;
+    /* align-self: center; */
     font-size: 10px;
     line-height: 1;
-    display: block;
-    margin: auto;
-    width: auto;
+    display: inline;
+    margin: 10px;
+    /* width: auto; */
     padding: 5px;
     text-decoration: none;
     text-align: center;
