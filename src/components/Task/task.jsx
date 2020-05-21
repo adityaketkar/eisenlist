@@ -20,14 +20,21 @@ const Container = styled.div`
 
 class Task extends Component { 
     
-    handleSubmitEditedTask = (event) => {
-        event.preventDefault(); 
+    handleSubmitEditedTask = (taskName, description, timeslots) => {
+        // event.preventDefault(); 
+        
         const newTaskObject = {
             id: this.props.task.id,
-            content: event.target.task.value,
-            description: event.target.description.value,
-            timeslots: event.target.timeslots.value
+            // content: event.target.task.value,
+            // description: event.target.description.value,
+            // timeslots: event.target.timeslots.value
+            content: this.props.task.content,
+            description: this.props.task.description,
+            timeslots: this.props.task.timeslots
         }
+        if(taskName){newTaskObject.content = taskName;}
+        if(description){newTaskObject.description = description;}
+        if(timeslots){newTaskObject.timeslots = timeslots;}
  
         this.props.editTask(this.props.task.id, newTaskObject);
     }

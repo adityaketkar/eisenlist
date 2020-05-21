@@ -3,23 +3,21 @@ form{
 }
 
 label{
-    font-size: x-small;
+    font-size: xx-small;
 }
 
 input[type=submit], input[type=button]{
-    background-color: inherit;
+    background-color: yellowgreen;
     border: 1px solid #DDD;
     border-radius: 0.2em;
     color: #333;
     cursor: pointer;
-    /* align-self: center; */
     font-size: 10px;
     line-height: 1;
-    display: inline;
-    margin: 10px;
-    /* width: auto; */
+    display: block;
+    width: 30%;
+    margin: auto;
     padding: 5px;
-    text-decoration: none;
     text-align: center;
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;

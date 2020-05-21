@@ -12,11 +12,13 @@ class NewTaskForm extends Component {
 			}
 			return (
 				<form onSubmit={this.props.handleSubmit}>
-					<Input prefillvalue={prefillData.content} inputtype="input" name="task" placeholder="" label="Task Name"  ></Input>
-					<Input prefillvalue={prefillData.description} inputtype="textarea" name="description" placeholder="Description" label="Description"></Input>
-					<Input prefillvalue={prefillData.timeslots} inputtype="number" name="timeslots" label="Pomodoro Slots"></Input>
+					<Input editMode={true} onSubmit={(taskName) => this.props.handleSubmit(taskName,null,null)} prefillvalue={prefillData.content} inputtype="input" name="task" placeholder="" label="Task Name"  ></Input>
+					<br></br>
+					<Input editMode={true} onSubmit={(description) => this.props.handleSubmit(null, description, null)} prefillvalue={prefillData.description} inputtype="textarea" name="description" placeholder="Description" label="Description"></Input>
+					<br></br>
+					<Input editMode={true} onSubmit={(timeslots) => this.props.handleSubmit(null, null, timeslots)} prefillvalue={prefillData.timeslots} inputtype="number" name="timeslots" label="Pomodoro Slots"></Input>
 					<hr></hr>
-					<input type="submit" value="Update" style={{backgroundColor: "lightyellow"}}></input>
+					{/* <input type="submit" value="Update" style={{backgroundColor: "lightyellow"}}></input> */}
 					<input onClick={this.props.handleDelete} type="button" value="Delete" style={{backgroundColor: "tomato"}}></input>
 				</form>
 			);
@@ -29,7 +31,7 @@ class NewTaskForm extends Component {
 				<Input inputtype="checkbox" name="urgent" label="Urgent"></Input>
 				<Input inputtype="checkbox" name="important" label="Important"></Input>
 				<hr></hr>
-				<input type="submit"></input>
+				<input type="submit" value="Add"></input>
 			</form>
 		);
 		

@@ -3,6 +3,7 @@ import Task from '../Task/task';
 import { Droppable } from 'react-beautiful-dnd';
 import './Column.css';
 import styled from 'styled-components';
+import EdiText from "react-editext";
 
 
 const TaskList = styled.div`
@@ -29,11 +30,32 @@ class ColumnInnerList extends Component{
 }
 
 class Column extends Component { 
+    state = {
+        title : this.props.title
+    }
+
+    onChangeTitle = (newTitle) => {
+        this.setState({title : newTitle});
+    }
+
     render(){
         return (
             
             <div className="Container" >
-                <div className="Title">{this.props.title}</div>
+                
+                
+                <div className="Title">
+                    <EdiText
+                        type="text"
+                        value={this.state.title}
+                        onSave={this.onChangeTitle}
+                        showButtonsOnHover
+                        editOnViewClick={true}
+                        submitOnEnter
+                        cancelOnEscape
+                        submitOnUnfocus
+                    />
+                </div>
                 <Droppable droppableId={this.props.column.id} type="task">
                     {(provided, snapshot) => (
                         <TaskList 
