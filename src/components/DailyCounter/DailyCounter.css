@@ -11,7 +11,7 @@
   
 
   .Button {
-    background-color: #000;
+    background-color: #888;
     border-radius: 10%;
     border-style: none;
     color: #ffffff;
@@ -24,10 +24,11 @@
   }
   
   .Button:hover {
-    background-color: #dd6262;
+    background-color: #0C9;
   }
 
-  h4{
+  h5{
+      color: #DDD;
       text-align: center;
   }
   

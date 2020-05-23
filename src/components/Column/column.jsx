@@ -42,8 +42,6 @@ class Column extends Component {
         return (
             
             <div className="Container" >
-                
-                
                 <div className="Title">
                     <EdiText
                         type="text"

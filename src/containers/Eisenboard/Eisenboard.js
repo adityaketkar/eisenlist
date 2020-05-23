@@ -7,12 +7,10 @@ import Popup from 'reactjs-popup';
 import NewTaskForm from "../../components/ControlPanel/NewTaskForm/NewTaskForm";
 import  "./Eisenboard.css";
 import { connect } from "react-redux";
-import DailyCounter from "../../components/DailyCounter/DailyCounter";
 
 class Eisenboard extends Component{
     state = {
         taskCounter: 5,
-        dailyPomodoroTarget : 10
     };
 
     onDragEnd = (result) => {
@@ -83,23 +81,13 @@ class Eisenboard extends Component{
         this.setState({taskCounter:taskCounter});
     }
 
-    updateDailyPomodoroTarget = (direction) => {
-        if(direction==="decrease"){
-            this.setState({dailyPomodoroTarget : this.state.dailyPomodoroTarget-1});
-        }
-        else if (direction==="increase"){
-            this.setState({dailyPomodoroTarget : this.state.dailyPomodoroTarget+1});
-        }
-        console.log(this.state);
-        
-    }
   render(){
     return (
 		//Parent component, allows drag and drop
 		<Aux>            
             <Popup 
                 trigger={<a href="#" className="float"> <i className="fa fa-plus my-float"></i> </a>} 
-                position="bottom left"
+                position="right bottom"
                 arrow={true}
                 closeOnDocumentClick
                 closeOnEscape
@@ -164,14 +152,6 @@ class Eisenboard extends Component{
 				</Droppable>
 			</div>
         </DragDropContext>
-
-        <div>
-            <DailyCounter 
-                dailyPomodoroTarget={this.state.dailyPomodoroTarget}
-                onClickDecrease={() => this.updateDailyPomodoroTarget('decrease')}
-                onClickIncrease={() => this.updateDailyPomodoroTarget('increase')}
-            ></DailyCounter>
-        </div>
         </Aux>
     );
     }

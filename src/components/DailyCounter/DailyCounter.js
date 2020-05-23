@@ -25,7 +25,7 @@ class DailyCounter extends Component {
         return (
             <div className="DailyCounter">
             <h5>
-              Daily Target
+              Daily Pomodoro Target
             </h5>
             <Button
               label="-"

@@ -2,6 +2,7 @@ import initialData from "../data/initial-data";
 
 const initialState = {
     ...initialData,
+    taskOrder : ['task-1', 'task-2', 'task-3', 'task-4']
 };
 
 const reducer = (state = initialState, action) => {
@@ -98,7 +99,44 @@ const reducer = (state = initialState, action) => {
             columns: newColumns
         };
     }
+    if(action.type === "SORT_TASKS"){
+        
+        //Make a copy of the tasklist 
+        let newTaskListArray = [];
 
+        //Now we sort the tasklist in this order -> UI, UNI, NUI, NUNI [U = Urgent, I = Important, N = Not]
+        newTaskListArray = newTaskListArray.concat(state.columns.UrgentImportant.taskIds);
+        newTaskListArray = newTaskListArray.concat(state.columns.UrgentNotImportant.taskIds);
+        newTaskListArray = newTaskListArray.concat(state.columns.NotUrgentImportant.taskIds);
+        newTaskListArray = newTaskListArray.concat(state.columns.NotUrgentNotImportant.taskIds);
+        console.log(newTaskListArray);
+
+        //Replace the current tasklist in the state with new one
+        // let columns = {...state.columns};
+        // columns[action.providedData.targetColumn].taskIds.push(action.providedData.taskID);
+
+        return {...state, taskOrder: newTaskListArray};
+    }
+    
+    if(action.type === "REORDER_EXPORTLIST"){
+        
+        const providedData = action.providedData;
+
+        //Make a copy of the tasklist 
+        let newTaskListArray = [...state.taskOrder];
+        console.log(providedData);
+        
+        // newTaskListArray = newTaskListArray.splice()        
+
+        //Now we sort the tasklist in this order -> UI, UNI, NUI, NUNI [U = Urgent, I = Important, N = Not]
+        console.log(newTaskListArray);
+
+        //Replace the current tasklist in the state with new one
+        // let columns = {...state.columns};
+        // columns[action.providedData.targetColumn].taskIds.push(action.providedData.taskID);
+
+        return {...state, taskOrder: newTaskListArray};
+    }
     return state;
 };
 
