@@ -19,7 +19,28 @@
     padding: 8px;
     transition: background-color 0.2s ease;
     background-color: inherit;
-    /* ${props => (props.isDraggingOver? 'lightgrey' : 'inherit')}; */
     flex-grow: 1;
     min-height: 100px;
 } 
+
+.TaskEntry {
+    margin: 4px;
+    padding: 4px;
+}
+
+.PomodoroSlots{
+    font-size: xx-small;
+}
+
+.modalContainer {
+    display: inline;
+    padding: 4px;
+    margin: 4px;
+    display:flex;
+    align-items: center;
+}
+
+.Clock{
+    margin: 4px;
+    padding: 4px;
+}

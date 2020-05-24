@@ -5,6 +5,24 @@ const initialState = {
     taskOrder : ['task-1', 'task-2', 'task-3', 'task-4']
 };
 
+const sortTasks = (state) => {
+    //Make a copy of the tasklist 
+    let newTaskListArray = [];
+
+    //Now we sort the tasklist in this order -> UI, UNI, NUI, NUNI [U = Urgent, I = Important, N = Not]
+    newTaskListArray = newTaskListArray.concat(state.columns.UrgentImportant.taskIds);
+    newTaskListArray = newTaskListArray.concat(state.columns.UrgentNotImportant.taskIds);
+    newTaskListArray = newTaskListArray.concat(state.columns.NotUrgentImportant.taskIds);
+    newTaskListArray = newTaskListArray.concat(state.columns.NotUrgentNotImportant.taskIds);
+    console.log(newTaskListArray);
+
+    //Replace the current tasklist in the state with new one
+    // let columns = {...state.columns};
+    // columns[action.providedData.targetColumn].taskIds.push(action.providedData.taskID);
+
+    return newTaskListArray;
+}
+
 const reducer = (state = initialState, action) => {
     
     //Update state if source droppable and destination droppable are different
@@ -62,12 +80,16 @@ const reducer = (state = initialState, action) => {
         let columns = {...state.columns};
         columns[action.providedData.targetColumn].taskIds.push(action.providedData.taskID);
 
+        let newTaskOrder = sortTasks(state);
+
         return {
             ...state,
             tasklist: tasklist,
-            columns : columns
+            columns : columns,
+            taskOrder:newTaskOrder
         }
     }
+
     if( action.type === "EDIT_TASK"){
 
         let newTaskList = { ...state.tasklist }
@@ -78,6 +100,7 @@ const reducer = (state = initialState, action) => {
             tasklist: newTaskList
         };
     }
+
     if( action.type === "DELETE_TASK"){
 
         let newTaskList = { ...state.tasklist };
@@ -92,51 +115,17 @@ const reducer = (state = initialState, action) => {
         newColumns.UrgentNotImportant.taskIds = newColumns.UrgentNotImportant.taskIds.filter(value => value!==action.taskID);
 
         console.log(state);
+
+        let newTaskOrder = sortTasks(state);
         
         return {
             ...state,
             tasklist: newTaskList,
-            columns: newColumns
+            columns: newColumns,
+            taskOrder: newTaskOrder
         };
     }
-    if(action.type === "SORT_TASKS"){
-        
-        //Make a copy of the tasklist 
-        let newTaskListArray = [];
-
-        //Now we sort the tasklist in this order -> UI, UNI, NUI, NUNI [U = Urgent, I = Important, N = Not]
-        newTaskListArray = newTaskListArray.concat(state.columns.UrgentImportant.taskIds);
-        newTaskListArray = newTaskListArray.concat(state.columns.UrgentNotImportant.taskIds);
-        newTaskListArray = newTaskListArray.concat(state.columns.NotUrgentImportant.taskIds);
-        newTaskListArray = newTaskListArray.concat(state.columns.NotUrgentNotImportant.taskIds);
-        console.log(newTaskListArray);
-
-        //Replace the current tasklist in the state with new one
-        // let columns = {...state.columns};
-        // columns[action.providedData.targetColumn].taskIds.push(action.providedData.taskID);
-
-        return {...state, taskOrder: newTaskListArray};
-    }
     
-    if(action.type === "REORDER_EXPORTLIST"){
-        
-        const providedData = action.providedData;
-
-        //Make a copy of the tasklist 
-        let newTaskListArray = [...state.taskOrder];
-        console.log(providedData);
-        
-        // newTaskListArray = newTaskListArray.splice()        
-
-        //Now we sort the tasklist in this order -> UI, UNI, NUI, NUNI [U = Urgent, I = Important, N = Not]
-        console.log(newTaskListArray);
-
-        //Replace the current tasklist in the state with new one
-        // let columns = {...state.columns};
-        // columns[action.providedData.targetColumn].taskIds.push(action.providedData.taskID);
-
-        return {...state, taskOrder: newTaskListArray};
-    }
     return state;
 };
 

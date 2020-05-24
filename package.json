@@ -7,6 +7,8 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "@wojtekmaj/react-timerange-picker": "^3.0.0",
+    "datebook": "^4.1.2",
     "install": "^0.13.0",
     "npm": "^6.14.5",
     "react": "^16.13.1",

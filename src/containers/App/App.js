@@ -12,8 +12,10 @@ const customStyles = {
 	  left                  : '50%',
 	  right                 : 'auto',
 	  bottom                : 'auto',
-	  marginRight           : '-50%',
-	  transform             : 'translate(-50%, -50%)'
+	  marginRight           : '-30%',
+	  transform             : 'translate(-50%, -50%)',
+	  width 				: '80%',
+	  height				: 'auto',
 	},
 	overlay: {zIndex: 1000}
 
@@ -21,8 +23,6 @@ const customStyles = {
 
 
 class App extends Component{
-
-
 	
 	state = {
 		dailyPomodoroTarget : 10,
@@ -30,14 +30,8 @@ class App extends Component{
 		sidebarIsOpen: false
 	};
 
-	// let subtitle
 	openModal = () => {
 		this.setState({modalIsOpen: true});
-	}
-
-	afterOpenModal= () =>  {
-		// references are now sync'd and can be accessed.
-		// this.state.subtitle.style.color = '#f00';
 	}
 
 	closeModal= () => {
@@ -45,8 +39,8 @@ class App extends Component{
 	}
 
 	openExportMenu = () => {
-		this.openModal();
 		this.closeSidebar();
+		this.openModal();
 	}
 
 	isSidebarOpen = (state) => {
@@ -57,8 +51,6 @@ class App extends Component{
 	closeSidebar =() => {
 		this.setState({sidebarIsOpen:false});
 	}
-
-
 	
 	updateDailyPomodoroTarget = (direction) => {
         if(direction==="decrease"){
@@ -70,25 +62,29 @@ class App extends Component{
     }
 	
 	render(){
+		Modal.setAppElement('#root');
 		return (
 			<div id="outer-container">
 					<Modal
-					// isOpen={this.state.modalIsOpen}
-					isOpen={true}
-					// onAfterOpen={afterOpenModal}
-					onRequestClose={this.closeModal}
-					style={customStyles}
-					contentLabel="Export Tasks to Calendar"
+						isOpen={this.state.modalIsOpen}
+						onRequestClose={this.closeModal}
+						style={customStyles}
+						contentLabel="Export Tasks to Calendar"
 					>
-					<ExportList
-						key="TEST"
-					/> 
+						<div style={{border:'1px solid',padding:'5px'}}>
+							<ExportList key="ExportList" /> 
+						</div>
 					</Modal>
-			<Menu left onStateChange={ this.isSidebarOpen } isOpen={this.state.sidebarIsOpen} pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } >
-					<a className="sidebarlink menu-item" id="about" target="_blank" href="https://github.com/adityaketkar/eisenlist">About EisenList</a>
 
+				<Menu
+					left
+					onStateChange={ this.isSidebarOpen }
+					isOpen={this.state.sidebarIsOpen}
+					pageWrapId={"page-wrap"}
+					outerContainerId={ "outer-container" } 
+				>
 					<a className="sidebarlink menu-item--small" href="#" onClick={this.openExportMenu}>Export to Calendar</a>
-
+					<a className="sidebarlink menu-item" id="about" target="_blank" href="https://github.com/adityaketkar/eisenlist">About EisenList</a>
 					<div className="DailyCounter">
 						<DailyCounter
 							dailyPomodoroTarget={this.state.dailyPomodoroTarget}
@@ -96,15 +92,13 @@ class App extends Component{
 							onClickIncrease={() => this.updateDailyPomodoroTarget('increase')}
 						></DailyCounter>
 					</div>
-			</Menu>
-			<main id="page-wrap">
-				<div className="EisenboardContainer" >
-					<Eisenboard></Eisenboard>
-					{/* <ExportToCalender></ExportToCalender> */}
-				</div>
-			</main>
+				</Menu>
+				<main id="page-wrap">
+					<div className="EisenboardContainer" >
+						<Eisenboard></Eisenboard>
+					</div>
+				</main>
 			</div>
-			
 		)
 	}
 }
