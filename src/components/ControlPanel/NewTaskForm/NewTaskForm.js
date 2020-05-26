@@ -18,7 +18,6 @@ class NewTaskForm extends Component {
 					<br></br>
 					<Input editMode={true} onSubmit={(timeslots) => this.props.handleSubmit(null, null, timeslots)} prefillvalue={prefillData.timeslots} inputtype="number" name="timeslots" label="Pomodoro Slots"></Input>
 					<hr></hr>
-					{/* <input type="submit" value="Update" style={{backgroundColor: "lightyellow"}}></input> */}
 					<input onClick={this.props.handleDelete} type="button" value="Delete" style={{backgroundColor: "tomato"}}></input>
 				</form>
 			);
@@ -28,8 +27,10 @@ class NewTaskForm extends Component {
 				<Input inputtype="input" name="task" placeholder="" label="Task Name"  ></Input>
 				<Input inputtype="textarea" name="description" placeholder="Description" label="Description"></Input>
 				<Input inputtype="number" name="timeslots" label="Pomodoro Slots"></Input>
-				<Input inputtype="checkbox" name="urgent" label="Urgent"></Input>
-				<Input inputtype="checkbox" name="important" label="Important"></Input>
+				<div className="checkboxes">
+					<Input inputtype="checkbox" name="urgent" label="Urgent"></Input>
+					<Input inputtype="checkbox" name="important" label="Important"></Input>
+				</div>
 				<hr></hr>
 				<input type="submit" value="Add"></input>
 			</form>

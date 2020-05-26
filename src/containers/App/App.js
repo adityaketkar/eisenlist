@@ -6,7 +6,7 @@ import DailyCounter from '../../components/DailyCounter/DailyCounter';
 import Modal from 'react-modal';
 import ExportList from '../../components/ExportList/ExportList';
 
-const customStyles = {
+const modalStyle = {
 	content : {
 	  top                   : '50%',
 	  left                  : '50%',
@@ -18,8 +18,7 @@ const customStyles = {
 	  height				: 'auto',
 	},
 	overlay: {zIndex: 1000}
-
-  };
+};
 
 
 class App extends Component{
@@ -63,18 +62,16 @@ class App extends Component{
 	
 	render(){
 		Modal.setAppElement('#root');
+
 		return (
 			<div id="outer-container">
-					<Modal
-						isOpen={this.state.modalIsOpen}
-						onRequestClose={this.closeModal}
-						style={customStyles}
-						contentLabel="Export Tasks to Calendar"
-					>
-						<div style={{border:'1px solid',padding:'5px'}}>
-							<ExportList key="ExportList" /> 
-						</div>
-					</Modal>
+				<Modal
+					isOpen={this.state.modalIsOpen}
+					onRequestClose={this.closeModal}
+					style={modalStyle}
+				>
+					<ExportList/> 
+				</Modal>
 
 				<Menu
 					left
@@ -83,8 +80,13 @@ class App extends Component{
 					pageWrapId={"page-wrap"}
 					outerContainerId={ "outer-container" } 
 				>
-					<a className="sidebarlink menu-item--small" href="#" onClick={this.openExportMenu}>Export to Calendar</a>
-					<a className="sidebarlink menu-item" id="about" target="_blank" href="https://github.com/adityaketkar/eisenlist">About EisenList</a>
+					<button 
+					type="button"
+					className="link-button menu-item--small" 
+					onClick={this.openExportMenu}>
+						Export to Calendar
+					</button>
+					<a className="sidebarlink menu-item" id="about" rel="noopener noreferrer" target="_blank" href="https://github.com/adityaketkar/eisenlist">About EisenList</a>
 					<div className="DailyCounter">
 						<DailyCounter
 							dailyPomodoroTarget={this.state.dailyPomodoroTarget}

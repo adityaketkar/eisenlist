@@ -17,9 +17,9 @@
     color: #ffffff;
     cursor: pointer;
     font-family: inherit;
-    height: 20px;
+    height: 30px;
     padding: 4px;
-    width: 20px;
+    width: 30px;
     margin: 10px;
   }
   
@@ -27,8 +27,8 @@
     background-color: #0C9;
   }
 
-  h5{
-      color: #DDD;
-      text-align: center;
+  .heading{
+    color: #DDD;
+    text-align: center;
   }
   

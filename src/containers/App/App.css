@@ -1,13 +1,13 @@
 .EisenboardContainer {
  	padding: 20px;
- 	margin: 20px;
+   margin: 20px;
 }
 
 /* Position and sizing of burger button */
 .bm-burger-button {
     position: fixed;
-    width: 48px;
-    height: 38px;
+    width: 44px;
+    height: 34px;
     left: 10px;
     top: 50px;
     z-index: 0;
@@ -16,7 +16,7 @@
   /* Color/shape of burger icon bars */
   .bm-burger-bars {
     background: #373a47;
-    box-shadow: 2px 2px 3px #999;
+    /* box-shadow: 2px 2px 3px #999; */
   }
   
   /* Color/shape of burger icon bars on hover*/
@@ -89,3 +89,23 @@
     width: 85%;
     bottom: 30px;
   }
+
+.link-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  /* text-decoration: underline;
+  display: inline;
+  margin: 0;
+  padding: 0; */
+  color: white;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: medium;
+}
+
+.link-button:hover{
+  text-decoration: none;
+  color: #0C9;
+}
+  

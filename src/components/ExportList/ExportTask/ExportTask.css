@@ -9,3 +9,13 @@ button:disabled{
     opacity: 0.4;
     cursor: not-allowed;
 }
+
+.Task {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.taskCard{
+    border: 2px solid blue;
+}

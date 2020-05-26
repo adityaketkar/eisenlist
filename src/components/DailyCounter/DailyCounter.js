@@ -24,7 +24,7 @@ class DailyCounter extends Component {
     render(){
         return (
             <div className="DailyCounter">
-            <h5>
+            <h5 className="heading">
               Daily Pomodoro Target
             </h5>
             <Button

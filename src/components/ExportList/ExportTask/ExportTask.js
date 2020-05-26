@@ -2,13 +2,14 @@ import { Component } from "react";
 import React from 'react';
 import Popup from "reactjs-popup";
 import styled from 'styled-components';
-import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
 import { GoogleCalendar } from 'datebook';
 import NewTaskForm from "../../ControlPanel/NewTaskForm/NewTaskForm";
 import ExportToCalendarLogo from "../../Logo/ExportToCalendarLogo";
 import './ExportTask.css';
+import 'antd/dist/antd.css';
+import { TimePicker } from 'antd';
 
-const Container = styled.div`
+const TaskCard = styled.div`
     margin: 4px;
     border-radius : 2px;
     border: 1px solid #ccc;
@@ -28,9 +29,12 @@ class ExportTask extends Component{
         time : []
     }
     
-    onTimeChange = (value) => {
-        this.setState({time : value});
-        this.props.onTimeChange(value);
+    onTimeChange = (time, timeString) => {
+        // console.log(time, timeString);
+        console.log(timeString);
+        
+        this.setState({time : timeString});
+        this.props.onTimeChange(timeString);
     }
 
     isTimeValid = () => {
@@ -42,7 +46,6 @@ class ExportTask extends Component{
     renderTask = () => {
 		const google = new GoogleCalendar({
 			title: this.props.tasklist[this.props.task].content,
-			location: 'Not Applicable',
 			description: this.props.tasklist[this.props.task].description,
 			start: (new Date()).setHours(+this.state.time[0].split(':')[0], +this.state.time[0].split(':')[1]),
 			end: (new Date()).setHours(+this.state.time[1].split(':')[0], +this.state.time[1].split(':')[1])
@@ -54,52 +57,44 @@ class ExportTask extends Component{
           return link;
     }
     
+    handleSubmitEditedTask = () => {
+        alert("Please edit tasks on main board!");
+    }
+
+    handleDeleteTask = () => {
+        alert("Please delete tasks on main board!");
+    }
+
     render() {
+        const { RangePicker } = TimePicker;
+
         return (
-            <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center'}}>
+            <div className="Task">
 			<Popup 
                 closeOnDocumentClick
                 trigger={
-                    <div className="modalContainer" >
-
-                        <Container 
-                        >
-                            <div>
-                                {this.props.tasklist[this.props.task].content}
-                            </div>
-                            <div style={{fontSize:"xx-small"}}>
-                                Pomodoro Timeslots : {this.props.tasklist[this.props.task].timeslots}
-                            </div>
-                                
-                        </Container>
-
-                    </div>
+                    <TaskCard>
+                        <div>
+                            {this.props.tasklist[this.props.task].content}
+                        </div>
+                        <div style={{fontSize:"xx-small"}}>
+                            Pomodoro Timeslots : {this.props.tasklist[this.props.task].timeslots}
+                        </div>  
+                    </TaskCard>
                 }    
                 position="bottom left"
             >
-
-                {close => (
+                { close => (
                     <NewTaskForm
-                    prefillWithTaskId={this.props.task} 
-                    handleSubmit={this.handleSubmitEditedTask} 
-                    handleDelete={this.handleDeleteTask}
-                />
+                        prefillWithTaskId={this.props.task} 
+                        handleSubmit={this.handleSubmitEditedTask} 
+                        handleDelete={this.handleDeleteTask}
+                    />
                 )}
             </Popup>
             <div className="Clock">
-                <TimeRangePicker 
-                    required
-                    minuteAriaLabel="Minute"
-                    minutePlaceholder="mm"
-                    rangeDivider="      to      "
-                    secondPlaceholder="ss"
-                    clearAriaLabel="Clear"
-                    hourPlaceholder="hh"
-                    disableClock
-                    value={this.state.time}
-                    onChange={this.onTimeChange}
-                    clearIcon={null}
-                />
+            
+                <RangePicker size="small" format="HH:mm" minuteStep={5} onChange={this.onTimeChange}/>
             </div>
             <div>
                 <button disabled={!this.isTimeValid()} onClick={this.renderTask} target="_blank"><ExportToCalendarLogo/></button>

@@ -6,6 +6,10 @@ label{
     font-size: xx-small;
 }
 
+.checkboxes{
+    display: flex;
+}
+
 input[type=submit], input[type=button]{
     background-color: yellowgreen;
     border: 1px solid #DDD;

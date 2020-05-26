@@ -7,6 +7,8 @@ import Popup from 'reactjs-popup';
 import NewTaskForm from "../../components/ControlPanel/NewTaskForm/NewTaskForm";
 import  "./Eisenboard.css";
 import { connect } from "react-redux";
+import { ReactComponent as AppLogo } from '../../assets/add.svg';
+
 
 class Eisenboard extends Component{
     state = {
@@ -84,9 +86,9 @@ class Eisenboard extends Component{
   render(){
     return (
 		//Parent component, allows drag and drop
-		<Aux>            
+		<Aux>      
             <Popup 
-                trigger={<a href="#" className="float"> <i className="fa fa-plus my-float"></i> </a>} 
+                trigger={<AppLogo className="float"/>} 
                 position="right bottom"
                 arrow={true}
                 closeOnDocumentClick
@@ -125,7 +127,7 @@ class Eisenboard extends Component{
                     }
 				</Droppable>
 			</div>
-
+            
 			<div>
 				{/*second row of droppable columns */}
 				<Droppable droppableId="NotUrgent" direction="horizontal" type="column">
