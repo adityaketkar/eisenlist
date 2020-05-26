@@ -1,68 +1,176 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://eisenlist.web.app">
+    <img src="images/logo.png" alt="Logo" width="60%" height="40%">
+  </a>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  <!-- <h3 align="center">EisenList</h3> -->
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+  <p align="center">
+    A minimal EisenHower Matrix, made to GET-SHIT-DONE (only!)
+    <br />
+    <br />
+    <a href="https://eisenlist.web.app">View Demo</a>
+    ·
+    <a href="https://github.com/adityaketkar/eisenlist/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/adityaketkar/eisenlist/issues">Request Feature</a>
+  </p>
+</p>
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* [About the Project](#about-the-project)
+  * [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Usage](#usage)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
+* [License](#license)
+* [Contact](#contact)
+* [Acknowledgements](#acknowledgements)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Stuck with complex to-do lists and daily task managers? 
+**EisenList** is a minimal Eisenhower Matrix, made to GET-SHIT-DONE (only).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Use this tool to accelarate your day-planning routine and make your daily calender with quickly.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+EisenList runs completely offline in your browser. No need to worry about privacy or internet outages. You data never leaves your browser.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+This app took shape when I was unable to find a good implementation of Eisenhower Matrix online and decided to make one for myself.
 
-## Learn More
+Here are some resources that might help you make best use of this webapp:
+* [Use calendars. Not to-do lists.](https://blog.usejournal.com/calendar-in-stead-of-to-do-lists-9ada86a512dd) [ Article on how to plan your day ]
+* [How to use Eisenhower Boxes and be productive](https://jamesclear.com/eisenhower-box)
+... will update this periodically
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Of course, no software is perfect. Let me know your suggestions and feature requests here. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Built With
+* [React](https://reactjs.org/)
+* [React Beautiful DnD by Atlassian](https://github.com/atlassian/react-beautiful-dnd)
+* [Redux](https://redux.js.org/)
+* [React Popup](https://react-popup.elazizi.com/react-menu/)
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+<!-- GETTING STARTED -->
+## Getting Started
 
-### Analyzing the Bundle Size
+If you just want to use the webapp, no need to clone/download this repo. The app is live and free to use [here](eisenlist.web.app/).
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+If you want to contribute to the project or just compile it locally in development mode, follow these steps : 
 
-### Making a Progressive Web App
+### Prerequisites
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+* npm
+```sh
+https://www.npmjs.com/get-npm
+```
 
-### Advanced Configuration
+### Installation
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+1. Clone the repo
+```sh
+git clone https://github.com/adityaketkar/eisenlist.git
+```
+3. Install NPM packages
+```sh
+cd eisenlist
+npm install
+```
+4. Start local server with npm
+```sh
+npm start
+```
 
-### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `npm run build` fails to minify
+<!-- USAGE EXAMPLES -->
+## Features
+### Responsive Drag-n-Drop taskboard 
+![something](images/responsive_dnd.gif)
+### 1-Click Add / Edit / Delete flow
+![something](images/add_edit_delete.gif)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Export to Google Calender
+(support for other calenders coming in subsequent iterations)
+![something](images/export_to_calendar.gif)
+
+<!-- ROADMAP -->
+## Roadmap
+
+See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
+
+
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Aditya Ketkar - [@adityaketkar](https://linkedin.com/in/adityaketkar) - adityaketkar848@gmail.com
+
+Project Link: [https://github.com/adityaketkar/eisenlist](https://github.com/adityaketkar/eisenlist)
+
+
+
+<!-- ACKNOWLEDGEMENTS -->
+## Acknowledgements
+* [Best-README](https://github.com/othneildrew/Best-README-Template/blob/master/README.md)
+* [Open Source Licence](https://choosealicense.com/)
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/adityaketkar/eisenlist.svg?style=flat-square
+[contributors-url]: https://github.com/adityaketkar/eisenlist/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/adityaketkar/eisenlist
+[forks-url]: https://github.com/adityaketkar/eisenlist/network/members
+[stars-shield]: https://img.shields.io/github/stars/adityaketkar/eisenlist.svg?style=flat-square
+[stars-url]: https://github.com/adityaketkar/eisenlist/stargazers
+[issues-shield]: https://img.shields.io/github/issues/adityaketkar/eisenlist
+[issues-url]: https://github.com/adityaketkar/eisenlist/issues
+[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
+[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/adityaketkar
