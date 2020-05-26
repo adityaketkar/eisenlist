@@ -11,7 +11,7 @@
 <br />
 <p align="center">
   <a href="https://eisenlist.web.app">
-    <img src="images/logo.png" alt="Logo" width="60%" height="40%">
+    <img src="images/logo_transparent.png" alt="Logo" width="60%" height="40%">
   </a>
 
   <!-- <h3 align="center">EisenList</h3> -->
@@ -108,13 +108,15 @@ npm start
 <!-- USAGE EXAMPLES -->
 ## Features
 ### Responsive Drag-n-Drop taskboard 
-![something](images/responsive_dnd.gif)
+<kbd><img src="images/responsive_dnd.gif" /></kbd>
+
 ### 1-Click Add / Edit / Delete flow
-![something](images/add_edit_delete.gif)
+<kbd><img src="images/add_edit_delete.gif" /></kbd>
 
 ### Export to Google Calender
 (support for other calenders coming in subsequent iterations)
-![something](images/export_to_calendar.gif)
+<kbd><img src="images/export_to_calendar.gif" /></kbd>
+
 
 <!-- ROADMAP -->
 ## Roadmap
