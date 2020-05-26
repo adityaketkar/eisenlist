@@ -51,6 +51,7 @@
 ## About The Project
 
 Stuck with complex to-do lists and daily task managers? 
+
 **EisenList** is a minimal Eisenhower Matrix, made to GET-SHIT-DONE (only).
 
 Use this tool to accelarate your day-planning routine and make your daily calender with quickly.
@@ -62,7 +63,8 @@ This app took shape when I was unable to find a good implementation of Eisenhowe
 Here are some resources that might help you make best use of this webapp:
 * [Use calendars. Not to-do lists.](https://blog.usejournal.com/calendar-in-stead-of-to-do-lists-9ada86a512dd) [ Article on how to plan your day ]
 * [How to use Eisenhower Boxes and be productive](https://jamesclear.com/eisenhower-box)
-... will update this periodically
+
+... will update this list periodically
 
 Of course, no software is perfect. Let me know your suggestions and feature requests here. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
 
@@ -82,10 +84,7 @@ If you want to contribute to the project or just compile it locally in developme
 
 ### Prerequisites
 
-* npm
-```sh
-https://www.npmjs.com/get-npm
-```
+* [npm](https://www.npmjs.com/get-npm)
 
 ### Installation
 
@@ -128,7 +127,7 @@ See the [open issues](https://github.com/othneildrew/Best-README-Template/issues
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what makes the open source community an amazing platform to learn, inspire, and create. Any contributions you can make are **greatly appreciated**.
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
@@ -173,6 +172,6 @@ Project Link: [https://github.com/adityaketkar/eisenlist](https://github.com/adi
 [issues-shield]: https://img.shields.io/github/issues/adityaketkar/eisenlist
 [issues-url]: https://github.com/adityaketkar/eisenlist/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[license-url]: https://github.com/adityaketkar/eisenlist/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/adityaketkar
