@@ -171,7 +171,7 @@ Project Link: [https://github.com/adityaketkar/eisenlist](https://github.com/adi
 [stars-url]: https://github.com/adityaketkar/eisenlist/stargazers
 [issues-shield]: https://img.shields.io/github/issues/adityaketkar/eisenlist
 [issues-url]: https://github.com/adityaketkar/eisenlist/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
+[license-shield]: https://img.shields.io/github/license/adityaketkar/eisenlist
 [license-url]: https://github.com/adityaketkar/eisenlist/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/adityaketkar
